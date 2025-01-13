@@ -1,0 +1,24 @@
+# fly.toml app configuration file generated for bun-static-host on 2025-01-13T14:53:11+01:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+# uncomment below and specify the name for your app
+# app = 'bun-static-host'
+# specify the primary region for your app
+primary_region = 'arn'
+
+[build]
+
+[http_service]
+  internal_port = 3000
+  force_https = true
+  auto_stop_machines = 'stop'
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ['app']
+
+[[vm]]
+  memory = '256mb'
+  cpu_kind = 'shared'
+  cpus = 1
