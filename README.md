@@ -136,3 +136,7 @@ Yes, any S3-compatible storage service will work.
 ## Contributing
 
 Feel free to open pull requests if there's an issue! Use GitHub DIscussion for feature requests or to discuss the project or potential defects.
+
+## Sponsors
+
+If you find this project useful, please consider sponsoring it. Your support helps me continue developing and maintaining this project. I haven't set up a Patreon or similar platform yet, but I'm open to suggestions. In the meantime, DM me on [Twitter/X](https://x.com/p_mbanugo), [LinkedIn](https://www.linkedin.com/in/pmbanugo/), or [Bluesky](https://bsky.app/profile/pmbanugo.me).
