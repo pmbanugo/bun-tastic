@@ -111,9 +111,27 @@ Heree are some common questions and answers:
 
 ### Q: Why use bun-tastic instead of traditional static hosting?
 
-bun-tastic is ideal when you need to serve multiple static sites through a single high-performance server while maintaining separate domains and content.
+It's fine to use traditional hosting service but if you're looking to selfhost your our static sites from a single (or distributed) machine, this is **FOR YOU**.
 
-- **Q:** Can I use any S3-compatible storage? A: Yes, any S3-compatible storage service will work.
+You have the flexibility to configure as much redirect/rewrite rules as you want. You could also add authorization/authentication rules to specific domains and routes, which can help you share content with specific users.
+
+It's ideal for agencies, freelancers, or individuals who have many clients and projects, and they can easily manage them from one server and save cost.
+
+### Q: Isn't it more expensive to selfhost?
+
+It depends on your usage.
+
+If you have just one website that gets a few hundred visits per day, it's probably cheaper to use a traditional static site host. However, if you have multiple websites or a high traffic site, self-hosting can be more cost-effective.
+
+When you combine the flexibility and control of self-hosting, with the affordable cost of Tigris storage, volume-based licensing on [Fly.io](https://fly.io/pricing/), and the ability to scale to zero, then you can save a lot of money.
+
+### Q: What are the benefits of bun-tastic?
+
+See the [benefits section](#benefits).
+
+### Q: Can I use any S3-compatible storage?
+
+Yes, any S3-compatible storage service will work.
 
 ## Contributing
 
