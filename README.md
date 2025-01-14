@@ -1,12 +1,15 @@
 # bun-tastic: static site hosting with Bun + Tigris
 
-A high-performance web server built with Bun that lets you serve multiple static websites from different S3 buckets through a single server. Perfect for managing multiple static sites with their own domains while keeping the hosting simple and efficient.
+A high-performance web server that lets you serve multiple static websites from different S3 buckets through a single server. It's perfect for managing multiple static sites with their individual domains while keeping the hosting simple and efficient.
 
-It uses Tigris for object storage and benefits from its global caching. Default deployment is on Fly.io and with it you can set up global compute with a single command.
+It uses [Tigris](https://www.tigrisdata.com/) for object storage and benefits from its global caching.
+
+Bun-tastic uses Fly.io as its default deployment option, allowing you to set up global compute with a single command.
 
 In other words, it's a high-performance, scalable, and efficient solution for hosting multiple static websites on your own terms.
 
-> 📚 **Tip**: Use GitHub's table of contents feature to navigate this document easily! Click the menu icon next to the README title above.
+> 📚 **Tip**: Use GitHub's table of contents feature to navigate this document easily! Click the menu icon next to the README title above. 
+![tip-illustration](https://i.imgur.com/16RFa09.png)
 
 ## Features and Benefits 🔥
 
@@ -17,8 +20,8 @@ In other words, it's a high-performance, scalable, and efficient solution for ho
 - Brotli & zstd compression support
 - Built-in monitoring with Grafana dashboard (via Fly)
 - Smart path handling with automatic index.html resolution
-- Built on Bun's native S3 client and web server, thereby benefitting [from Bun's fast performance](https://x.com/jarredsumner/status/1877660347709972484))
-- _Lightweight:_ Uses zero dependency and can run on a single CPU with 256MB RAM
+- Built on Bun's native S3 client and web server, thereby benefiting [from Bun's fast performance](https://x.com/jarredsumner/status/1877660347709972484)
+- It's Lightweight. It uses zero dependency and can run on a single CPU with 256MB RAM
 - Posssibility to add and configure middleware and that can handle extra needs like authorization, redirect/rewrite rules, etc.
 - Possible cheap/affordable hosting with volume-based licensing on Fly and affordable Tigris storage.
 
@@ -36,7 +39,7 @@ It's fast! But better to try it for yourself. Here's a sample from a local test:
 
 ![load testing and measuring response time](https://cdn.hashnode.com/res/hashnode/image/upload/v1736875740269/531f0b7a-5b22-44f6-9156-57b5619f63f9.webp)
 
-You can see the response time is very low and more than have returned in less than 100ms, for a response of 6KiB in size. Now deploy this in the regions you want to get lower latency and faster response times.
+You can see that the response time is very low and more than have returned in less than 100ms, for a response of 6KiB in size. Now deploy this in the regions you want to get lower latency and faster response times.
 
 > The server is a shared VM with 256MB RAM and 1 CPU running on fly.io. Deployed region is in Sweden (arn).
 > Tested on a 2021 MacBook Pro with M1 chip. Average internet speed 200 - 300Mbps.
@@ -65,37 +68,64 @@ Here's a video of me sampling the load and response times:
    ```json
    {
      "example.com": "my-bucket-name",
-     "another-site.com": "another-bucket"
+     "another-site.com": "another-bucket-name"
    }
    ```
 4. If you intend to run it local, copy `.env.example` to `.env` and fill in your S3 credentials:
    ```bash
    cp .env.example .env
    ```
-5. For Fly.io deployment, add the secrets after you deployed or created the app. You can do it from the dashboard or CLI:
+5. For Fly.io deployment, add the secrets to the env after you deployed or created the app. You can add it from the dashboard or CLI. Here is an example using CLI:
    ```bash
    fly secrets set AWS_ACCESS_KEY_ID=<KEY_ID> AWS_SECRET_ACCESS_KEY=<ACCESS_KEY> AWS_REGION=auto AWS_ENDPOINT=https://fly.storage.tigris.dev
    ```
 
 ### Running Locally
 
-To run it locally ensure you have the minimum required version for Bun, the correct .env file and values, and the comain config (confgi.json).
+To run bun-tastic locally ensure you have the minimum required version for Bun (`Bun >= 1.1.43`), the correct `.env` file and values, and the config (config.json).
 
-Once those are in place, run `bun index.ts` to start the server.
+Once you have confirmed that you have all of that in place, run `bun index.ts` to start the server.
 
-> You can configure a local domain in /etc/hosts and use a tool like Caddy to proxy the requests to the local server.
+> You can configure a local domain in `/etc/hosts` and use a tool like [Caddy](https://caddyserver.com/) to proxy the requests to the local server.
 
 ### Deployment to fly.io
 
-There's a sample fly.toml file in the repo, i.e. **fly.example.toml**. Rename it to fly.toml. Edit it and set the name for the app, and optionally change the machines type (or other settings) to match your needs.
+There's a sample `fly.toml` file in the repo, i.e. **fly.example.toml**. Rename it to `fly.toml` or create your own `fly.toml` file with same content. Edit it and set the name for the app, and optionally change the machines type (or other settings) to match your needs.
 
-Then run `fly launch --no-deploy` to launch/scaffold the app. Next, set the secrets using the command:
+```diff
+# uncomment below and specify the name for your app
+- # app = 'bun-static-host'
++ app = 'your-own-app-name'
+# specify the primary region for your app
+primary_region = 'arn'
+
+[build]
+
+[http_service]
+  internal_port = 3000
+  force_https = true
+  auto_stop_machines = 'stop'
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ['app']
+
+[[vm]]
+  memory = '256mb'
+  cpu_kind = 'shared'
+  cpus = 1
+```
+
+Then run `fly launch --no-deploy` to launch/scaffold the project. 
+
+Next, set the secrets using the command in case you haven't done that already:
 
 ```bash
 fly secrets set AWS_ACCESS_KEY_ID=<KEY_ID> AWS_SECRET_ACCESS_KEY=<ACCESS_KEY> AWS_REGION=auto AWS_ENDPOINT=https://fly.storage.tigris.dev
 ```
 
-Finally, run `fly deploy` to deploy the app. You can scale the app to multiple machines and regions if needed (see [docs for details](https://fly.io/docs/flyctl/scale-count/)).
+Finally, run `fly deploy` to deploy the app. 
+
+You can scale the app to multiple machines and regions if needed (see [docs for details](https://fly.io/docs/flyctl/scale-count/)).
 
 ### Domains, DNS, and TLS Certificates
 
@@ -105,13 +135,12 @@ You'll find more info on how to do this in their [docs](https://fly.io/docs/netw
 
 ## FAQ
 
-I try to answer some questions I assume you might have here. If you have more question or have doubts/critic, please start a discussion :)
 
-Heree are some common questions and answers:
+Here are some common questions and answers.Please, if you have more question or have doubts/critic, please start a discussion :)
 
 ### Q: Why use bun-tastic instead of traditional static hosting?
 
-It's fine to use traditional hosting service but if you're looking to selfhost your our static sites from a single (or distributed) machine, this is **FOR YOU**.
+It's fine to use traditional hosting service but if you're looking to selfhost your own static sites from a single (or distributed) machine, this is **FOR YOU**.
 
 You have the flexibility to configure as much redirect/rewrite rules as you want. You could also add authorization/authentication rules to specific domains and routes, which can help you share content with specific users.
 
@@ -135,7 +164,7 @@ Yes, any S3-compatible storage service will work.
 
 ## Contributing
 
-Feel free to open pull requests if there's an issue! Use GitHub DIscussion for feature requests or to discuss the project or potential defects.
+Feel free to open pull requests if there's an issue! Use GitHub Discussion for feature requests or to discuss the project or potential defects.
 
 ## Sponsors
 
