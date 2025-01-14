@@ -173,3 +173,9 @@ dist
 
 # Finder (MacOS) folder config
 .DS_Store
+
+# App specific config
+config.example.json
+fly.example.toml
+LICENSE
+README.md
