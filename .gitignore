@@ -177,3 +177,4 @@ dist
 # App specific config
 config.json
 config.jsonc
+fly.toml
