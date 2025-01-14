@@ -8,7 +8,7 @@ In other words, it's a high-performance, scalable, and efficient solution for ho
 
 > 📚 **Tip**: Use GitHub's table of contents feature to navigate this document easily! Click the menu icon next to the README title above.
 
-## Features & Benefits 🔥
+## Features and Benefits 🔥
 
 - Serve multiple static websites from one application
 - Global distributed caching and compute
@@ -127,7 +127,7 @@ When you combine the flexibility and control of self-hosting, with the affordabl
 
 ### Q: What are the benefits of bun-tastic?
 
-See the [benefits section](#benefits).
+See the [benefits section](#features-and-benefits-).
 
 ### Q: Can I use any S3-compatible storage?
 
