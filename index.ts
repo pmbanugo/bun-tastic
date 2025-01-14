@@ -17,23 +17,38 @@ const server = Bun.serve({
 
     const fileKey = extractPath(req.url);
     const file = s3(fileKey, { bucket });
-    const stat = await file.stat();
+    try {
+      const stat = await file.stat();
 
-    // Check If-None-Match against current S3 ETag
-    const ifNoneMatch = req.headers.get("If-None-Match");
-    if (ifNoneMatch === stat.etag) {
-      return new Response(null, { status: 304 });
-    }
-    // Check If-Modified-Since against S3 Last-Modified
-    const ifModifiedSince = req.headers.get("If-Modified-Since");
-    if (ifModifiedSince && new Date(ifModifiedSince) >= stat.lastModified) {
-      return new Response(null, { status: 304 });
-    }
+      // Check If-None-Match against current S3 ETag
+      const ifNoneMatch = req.headers.get("If-None-Match");
+      if (ifNoneMatch === stat.etag) {
+        return new Response(null, { status: 304 });
+      }
+      // Check If-Modified-Since against S3 Last-Modified
+      const ifModifiedSince = req.headers.get("If-Modified-Since");
+      if (ifModifiedSince && new Date(ifModifiedSince) >= stat.lastModified) {
+        return new Response(null, { status: 304 });
+      }
 
-    const headers = await getHeaders(stat);
-    return new Response(file.stream(), {
-      headers,
-    });
+      const headers = await getHeaders(stat);
+      return new Response(file.stream(), {
+        headers,
+      });
+    } catch (error) {
+      // The S3Error type from the code isn't exposed in Bun types. Is this a bug? https://bun.sh/docs/api/s3#error-codes
+      if (
+        error !== null &&
+        typeof error === "object" &&
+        "code" in error &&
+        error.code === "NoSuchKey"
+      ) {
+        return new Response(null, { status: 404 });
+      }
+
+      console.error(error);
+      return new Response(null, { status: 500 });
+    }
   },
 });
 
