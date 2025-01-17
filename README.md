@@ -8,15 +8,14 @@ Bun-tastic uses Fly.io as its default deployment option, allowing you to set up 
 
 In other words, it's a high-performance, scalable, and efficient solution for hosting multiple static websites on your own terms.
 
-> 📚 **Tip**: Use GitHub's table of contents feature to navigate this document easily! Click the menu icon next to the README title above. 
-![tip-illustration](https://i.imgur.com/16RFa09.png)
+> 📚 **Tip**: Use GitHub's table of contents feature to navigate this document easily! Click the menu icon next to the README title above.
+> ![tip-illustration](https://i.imgur.com/16RFa09.png)
 
 ## Features and Benefits 🔥
 
 - Serve multiple static websites from one application
 - Global distributed caching and compute
 - Easy configuration through JSON
-- HTTP/3 support
 - Brotli & zstd compression support
 - Built-in monitoring with Grafana dashboard (via Fly)
 - Smart path handling with automatic index.html resolution
@@ -115,7 +114,7 @@ primary_region = 'arn'
   cpus = 1
 ```
 
-Then run `fly launch --no-deploy` to launch/scaffold the project. 
+Then run `fly launch --no-deploy` to launch/scaffold the project.
 
 Next, set the secrets using the command in case you haven't done that already:
 
@@ -123,7 +122,7 @@ Next, set the secrets using the command in case you haven't done that already:
 fly secrets set AWS_ACCESS_KEY_ID=<KEY_ID> AWS_SECRET_ACCESS_KEY=<ACCESS_KEY> AWS_REGION=auto AWS_ENDPOINT=https://fly.storage.tigris.dev
 ```
 
-Finally, run `fly deploy` to deploy the app. 
+Finally, run `fly deploy` to deploy the app.
 
 You can scale the app to multiple machines and regions if needed (see [docs for details](https://fly.io/docs/flyctl/scale-count/)).
 
@@ -134,7 +133,6 @@ For the domain configuration, you'll need to set up DNS records for each domain 
 You'll find more info on how to do this in their [docs](https://fly.io/docs/networking/custom-domain/). If you use Cloudflare for DNS, make sure you read this [section in that page](https://fly.io/docs/networking/custom-domain/#i-use-cloudflare-and-there-seems-to-be-a-problem-issuing-or-validating-my-fly-io-tls-certificate).
 
 ## FAQ
-
 
 Here are some common questions and answers.Please, if you have more question or have doubts/critic, please start a discussion :)
 
