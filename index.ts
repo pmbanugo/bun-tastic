@@ -36,10 +36,9 @@ const server = Bun.serve({
         headers,
       });
     } catch (error) {
-      // The S3Error type from the code isn't exposed in Bun types. Is this a bug? https://bun.sh/docs/api/s3#error-codes
       if (
-        error !== null &&
-        typeof error === "object" &&
+        error instanceof Error &&
+        error.name === "S3Error" &&
         "code" in error &&
         error.code === "NoSuchKey"
       ) {
