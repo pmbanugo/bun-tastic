@@ -16,7 +16,7 @@ In other words, it's a high-performance, scalable, and efficient solution for ho
 - Serve multiple static websites from one application
 - Global distributed caching and compute
 - Easy configuration through JSON
-- Brotli & zstd compression support
+- Brotli & zstd compression (via Fly Proxy), with response streaming
 - Built-in monitoring with Grafana dashboard (via Fly)
 - Smart path handling with automatic index.html resolution
 - Built on Bun's native S3 client and web server, thereby benefiting [from Bun's fast performance](https://x.com/jarredsumner/status/1877660347709972484)
