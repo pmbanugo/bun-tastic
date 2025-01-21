@@ -22,7 +22,7 @@ RUN apt-get update -qq && \
 
 # Install node modules
 COPY bun.lockb package.json ./
-RUN bun install --ci
+RUN bun install --omit=dev --omit=peer
 
 # Copy application code
 COPY . .
