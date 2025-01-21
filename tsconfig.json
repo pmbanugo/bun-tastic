@@ -1,4 +1,5 @@
 {
+  // Checklist: https://2ality.com/2025/01/tsconfig-json.html
   "compilerOptions": {
     // Enable latest features
     "lib": ["ESNext", "DOM", "DOM.AsyncIterable", "DOM.Iterable"],
