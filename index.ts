@@ -1,6 +1,6 @@
 import { s3, type S3Stats } from "bun";
 import { extractPath } from "./lib/request-helpers";
-import domains from "./config.json" assert { type: "json" };
+import domains from "./config.json" with { type: "json" };
 
 const server = Bun.serve({
   async fetch(req) {
