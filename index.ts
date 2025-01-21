@@ -62,7 +62,6 @@ async function getHeaders(fileStat: S3Stats): Promise<HeadersInit> {
 
   return {
     "Content-Type": fileStat.type,
-    "Content-Length": fileStat.size.toString(),
     Etag: fileStat.etag,
     "Last-Modified": fileStat.lastModified.toUTCString(),
     "Cache-Control": cacheControl,
