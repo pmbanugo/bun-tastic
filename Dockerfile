@@ -21,7 +21,7 @@ RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y build-essential pkg-config python-is-python3
 
 # Install node modules
-COPY bun.lockb package.json ./
+COPY bun.lockb package.json packages/cli/package.json ./
 RUN bun install --omit=dev --omit=peer
 
 # Copy application code

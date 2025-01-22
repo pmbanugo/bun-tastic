@@ -1,0 +1,31 @@
+{
+  "name": "@pmbanugo/buntastic-cli",
+  "version": "0.0.1-canary.4",
+  "module": "index.ts",
+  "type": "module",
+  "description": "A CLI to upload files to S3-compatible storage. Specifically designed for use with Buntastic.",
+  "bin": {
+    "buntastic": "index.ts"
+  },
+  "dependencies": {
+    "sade": "^1.8.1"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.7.3"
+  },
+  "keywords": [
+    "buntastic",
+    "static-site",
+    "s3",
+    "s3-upload",
+    "bun",
+    "bun.sh"
+  ],
+  "license": "Apache-2.0",
+  "author": "Peter Mbanugo (https://pmbanugo.me)",
+  "repository": "https://github.com/pmbanugo/bun-tastic",
+  "homepage": "https://github.com/pmbanugo/bun-tastic"
+}
