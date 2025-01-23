@@ -6,8 +6,8 @@ interface UploadOptions {
   file?: string;
   dir?: string;
   region?: string;
-  accessKeyId?: string;
-  secretAccessKey?: string;
+  "access-key-id"?: string;
+  "secret-access-key"?: string;
   endpoint?: string;
 }
 
@@ -20,8 +20,8 @@ export async function upload(bucket: string, opts: UploadOptions) {
   const client = new S3Client({
     bucket: bucket,
     region: opts.region,
-    accessKeyId: opts.accessKeyId,
-    secretAccessKey: opts.secretAccessKey,
+    accessKeyId: opts["access-key-id"],
+    secretAccessKey: opts["secret-access-key"],
     endpoint: opts.endpoint,
   });
 
