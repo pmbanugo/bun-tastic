@@ -17,7 +17,7 @@ prog
   .option("--endpoint", "S3 endpoint/url")
   .option("--access-key-id", "AWS access key ID")
   .option("--secret-access-key", "AWS secret access key")
-  .example("upload react-site --dir build --access-key-id $AWS_ACCESS_KEY_ID --secret-access-key $AWS_SECRET_ACCESS_KEY --region $S3_URL --region $AWS_REGION")
+  .example("upload react-site --dir build --access-key-id $AWS_ACCESS_KEY_ID --secret-access-key $AWS_SECRET_ACCESS_KEY --endpoint $S3_URL --region $AWS_REGION")
   .action(upload);
 
 prog.parse(process.argv);
