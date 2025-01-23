@@ -132,7 +132,7 @@ For the domain configuration, you'll need to set up DNS records for each domain 
 
 You'll find more info on how to do this in their [docs](https://fly.io/docs/networking/custom-domain/). If you use Cloudflare for DNS, make sure you read this [section in that page](https://fly.io/docs/networking/custom-domain/#i-use-cloudflare-and-there-seems-to-be-a-problem-issuing-or-validating-my-fly-io-tls-certificate).
 
-## Uploadding Files With Buntastic CLI
+## Uploading Files With Buntastic CLI
 
 While you can upload files to your bucket using the web console from Tigris, or the AWS CLI, you can also use the _Buntastic_ CLI to upload files to your Tigris/S3 bucket. It is designed to be simple to use, and also uploads faster compared to the other options.
 
