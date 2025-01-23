@@ -50,9 +50,15 @@ Here's a video of me sampling the load and response times:
 
 ## Usage Instructions
 
+Here's a video showing how to use it with the CLI (Quickstart demo):
+
+[![Quickstart demo of bun-tastic CLI](https://img.youtube.com/vi/oRommxCpHM4/0.jpg)](https://www.youtube.com/watch?v=oRommxCpHM4)
+
+> **Click to watch the video**
+
 ### Prerequisites
 
-- Bun >= 1.1.43
+- Bun >= 1.2.0
 - S3-compatible storage (like Tigris). Tigris is recommended for its global/distributed caching support.
 - An account on Fly.io (optional)
 
