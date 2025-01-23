@@ -134,7 +134,11 @@ You'll find more info on how to do this in their [docs](https://fly.io/docs/netw
 
 ## Uploadding Files With Buntastic CLI
 
-You can use the _buntastic_ CLI to upload files to your Tigris/S3 bucket. More details about how to install and use it can be found in the [CLI's README](/packages/cli/README.md).
+While you can upload files to your bucket using the web console from Tigris, or the AWS CLI, you can also use the _Buntastic_ CLI to upload files to your Tigris/S3 bucket. It is designed to be simple to use, and also uploads faster compared to the other options.
+
+You can use the CLI for your daily task, or use it in your CI/CD pipeline.
+
+More details about how to install and use it can be found in the [CLI's README](/packages/cli/README.md).
 
 ## FAQ
 
