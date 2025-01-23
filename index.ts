@@ -16,7 +16,7 @@ const server = Bun.serve({
     }
 
     const fileKey = extractPath(req.url);
-    const file = s3(fileKey, { bucket });
+    const file = s3.file(fileKey, { bucket });
     try {
       const stat = await file.stat();
 
