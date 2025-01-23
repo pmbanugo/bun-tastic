@@ -48,7 +48,7 @@ Here's a video of me sampling the load and response times:
 
 ![GIF showing the output from my terminal load testing and ](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/zy6zc10dg96vv3qel94u.gif)
 
-## Setup Instructions
+## Usage Instructions
 
 ### Prerequisites
 
@@ -131,6 +131,10 @@ You can scale the app to multiple machines and regions if needed (see [docs for 
 For the domain configuration, you'll need to set up DNS records for each domain you want to serve. Fly.io can handle TLS certificates for you, but you'll need to set up the DNS records to point to the app's IP address or Fly's subdomain.
 
 You'll find more info on how to do this in their [docs](https://fly.io/docs/networking/custom-domain/). If you use Cloudflare for DNS, make sure you read this [section in that page](https://fly.io/docs/networking/custom-domain/#i-use-cloudflare-and-there-seems-to-be-a-problem-issuing-or-validating-my-fly-io-tls-certificate).
+
+## Uploadding Files With Buntastic CLI
+
+You can use the _buntastic_ CLI to upload files to your Tigris/S3 bucket. More details about how to install and use it can be found in the [CLI's README](/packages/cli/README.md).
 
 ## FAQ
 
