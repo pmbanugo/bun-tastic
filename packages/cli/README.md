@@ -2,6 +2,10 @@
 
 The Buntastic CLI is a command-line tool that enables you to upload files/folders to an S3 bucket. It is designed specifically for the [Buntastic](https://github.com/pmbanugo/bun-tastic) static site hosting service, but it can be use for uploading files to S3.
 
+Here's a video showing how to use it with the CLI (Quickstart demo):
+
+[![Quickstart demo of buntastic CLI](https://img.youtube.com/vi/oRommxCpHM4/0.jpg)](https://www.youtube.com/watch?v=oRommxCpHM4)
+
 Run the following command to install or upgrade the CLI:
 
 ```bash

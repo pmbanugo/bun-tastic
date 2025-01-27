@@ -1,6 +1,6 @@
 {
   "name": "@pmbanugo/buntastic-cli",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "module": "index.ts",
   "type": "module",
   "description": "A CLI to upload files to S3-compatible storage. Specifically designed for use with Buntastic.",
